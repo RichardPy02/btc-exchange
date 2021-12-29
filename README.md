@@ -69,7 +69,7 @@ These simple instructions will help you to set your environment and try my proje
 
 ### Prerequisites
 
-This project assumes you have already installed Python (at least 3.9.9 version) on your system.
+This project assumes you have already installed Python (at least 3.9.9 version) and MongoDB (in case you need help check this [guide](https://www.html.it/pag/52332/installazione-2/)) on your system.
 
 ### Installation
 
