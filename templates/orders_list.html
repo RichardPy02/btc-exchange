@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Start Banner -->
+    <div class="section inner_page_banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="banner_title">
+                        <h3>Orders</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Banner -->
+    
+   <!-- section -->
+    <div class="section layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="heading_main text_align_center">
+                           <h2><span class="theme_color"></span>Orders</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- order -->
+            <div class="row">
+            {% for order in orders %}
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="full news_blog">
+                        {% if order.type == 'S' %}
+                        <img class="img-responsive" src="{% static 'images/sale_order.png' %}" alt="#" />
+                        {% elif order.type == 'P' %}
+                        <img class="img-responsive" src="{% static 'images/purchase_order.png' %}" alt="#" />
+                        {% endif %}
+                       <div class="overlay"><a class="main_bt transparent" href="{% url 'order_detail' order.pk %}">Details</a></div>
+                       <div class="blog_details">
+                         {% if order.type == 'S' %}
+                         <h3 style="text-align:center">SALES</h3>
+                         {% else %}
+                         <h3 style="text-align:center">PURCHASE</h3>
+                         {% endif %}
+                         <ul>
+                             <li><strong style="color:black">BTC: {{order.btc}}</strong></li>
+                             <li><strong style="color:black">Price: $ {{order.price}}</strong></li>
+                         </ul>
+
+                       </div>
+                    </div>
+                </div>
+
+            {% empty %}
+            <h4>There aren't other users' available orders...</h4>
+            <div class="full paddding_left_15">
+                <a class="main_bt" href="{% url 'profile' user.pk%}">Your Personal Area ></a>
+            </div>
+            {% endfor %}
+                </div>
+        </div>
+    </div>
+    <!-- end section -->
+{% endblock %}

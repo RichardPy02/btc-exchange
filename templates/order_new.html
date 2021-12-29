@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Start Banner -->
+    <div class="section inner_page_banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="banner_title">
+                        {% if new %}
+                        <h3>New Order</h3>
+                        {% else %}
+                        <h3>Edit Order</h3>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Banner -->
+<!-- section -->
+    <div class="section layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="heading_main text_align_center">
+                            {% if new %}
+                           <h2><span class="theme_color"></span>Create Your New Order</h2>
+                            {% else %}
+                            <h2><span class="theme_color"></span>Edit Your Order</h2>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end section -->
+    <!-- new_order_form -->
+    <div class="section contact_form">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 offset-lg-3">
+                    <div class="full">
+                        <form class="contact_form_inner"  method="post">
+                            {% csrf_token %}
+                            {% for value in form.errors %}
+                            <h3 style="text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;">The {{value}} has just taken, try with an other... </h3>
+                            {% endfor %}
+                            {% for message in messages %}
+                            <h3 style="text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;">{{message}}</h3>
+                            {% endfor %}
+                            <fieldset>
+                                {% if profiles.sellers %}
+                                <div class="field">
+                                    <select name="trader" required="required">
+                                        {% for profile in profiles.sellers%}
+                                            <option selected>{{ user.pk }}</option>
+                                            <option>{{ profile }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                {% elif profiles.buyers %}
+                                    <div class="field">
+                                    <select name="trader" id="myselect" required="required">
+                                        {% for profile in profiles.buyers%}
+                                            <option selected>{{ user.pk }}</option>
+                                            <option>{{ profile }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                {% else %}
+                                <div class="field">
+                                    <select name="trader" required="required">
+                                        <option>{{user.pk}}</option>
+                                    </select>
+                                </div>
+                                {% endif %}
+                                <div class="field">
+                                    <select name="type" required="required">
+                                        {% for x, y in form.fields.type.choices %}
+                                            <option value="{{x}}" {% if form.type.value == x %} selected {% endif %}>{{ y }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <input type="number" min="0.000000001" step="0.000000001" name="btc" placeholder="Number of bitcoin" value="{{form.btc.value}}" required="required">
+                                </div>
+                                <div class="field">
+                                    <input type="number" name="price" placeholder="Price" value="{{form.price.value}}" required="required">
+                                </div>
+                                <div class="field center">
+                                    {% if new %}
+                                    <button>Add Order</button>
+                                    {% else %}
+                                    <button>Edit Order</button>
+                                    {% endif %}
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end new_order_form -->
+    <!-- end section -->
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Start Banner -->
+    <div class="section inner_page_banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="banner_title">
+                        <h3>Personal Area</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Banner -->
+
+   <!-- section -->
+    <div class="section layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="heading_main text_align_center">
+                           <h2><span class="theme_color"></span>Your Orders</h2>
+                        </div>
+
+                    </div>
+                    <div class="full paddding_left_15">
+                        <ul style="font-size:24px">
+                            <li>Bitcoin Balance: {{user.btc_balance}}</li>
+                            <li>Fungible Bitcoins: {{user.fungible_btc}}</li>
+                            <li>Dollar Balance: $ {{user.dollar_balance}}</li>
+                            <li>Fungible Balance: $ {{user.fungible_balance}}</li>
+                        </ul>
+                        <a class="main_bt" style="margin-right:15px" href="{% url 'order_new' %}">Add an Order ></a>
+                        <a class="main_bt" href="{% url 'subprofile' %}">Add a Subprofile ></a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- order -->
+            <div class="row">
+            {% for order in orders %}
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="full news">
+                        {% if order.type == 'S' %}
+                        <img class="img-responsive" src="{% static 'images/sale_order.png' %}" alt="#" />
+                        {% elif order.type == 'P' %}
+                        <img class="img-responsive" src="{% static 'images/purchase_order.png' %}" alt="#" />
+                        {% endif %}
+                       <div class="blog_details">
+                         {% if order.type == 'S' %}
+                         <h3 style="text-align:center">SALES</h3>
+                         {% else %}
+                         <h3 style="text-align:center">PURCHASE</h3>
+                         {% endif %}
+                         <ul>
+                             <li><strong style="color:black">BTC: {{order.btc}}</strong></li>
+                             <li><strong style="color:black">Price: $ {{order.price}}</strong></li>
+                         </ul>
+                           <div class="paddding_left_15">
+                                <a class="main_bt_mod" href="{% url 'order_edit' order.pk %}">Edit Order ></a>
+                           </div>
+                           <div class="paddding_left_15">
+                                <a class="main_bt_mod" href="{% url 'order_delete' order.pk %}">Delete Order ></a>
+                           </div>
+
+                       </div>
+                    </div>
+                </div>
+
+            {% empty %}
+            <h4>It seems you have no orders, don't worry, click the button to add an order...</h4>
+
+            {% endfor %}
+                </div>
+        </div>
+    </div>
+    <!-- end section -->
+{% endblock %}

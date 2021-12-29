@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Start Banner -->
+    <div class="section inner_page_banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="banner_title">
+                        {% if order.type == "S" %}
+                        <h3>Sales</h3>
+                        {% else %}
+                        <h3>Purchase</h3>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Banner -->
+    
+    <!-- section -->
+    <div class="section layout_padding about_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="full paddding_left_15">
+                        <div class="heading_main text_align_left">
+                           {% if order.type == "S" %}
+                            <h2>A {{order.trader.username}}'s Sales</h2>
+                           {% else %}
+                            <h2>{{order.trader.username}}'s Purchase Request</h2>
+                           {% endif %}
+                        </div>
+                    </div>
+                    <div class="full paddding_left_15">
+                        <ul>
+                            <li><span style="font-size:16px">{{order.timestamp|timesince }} ago</span></li>
+                            <li><strong style="color:black; font-size:24px">BTC: {{order.btc}}</strong></li>
+                            <li><strong style="color:black; font-size:24px">Price: $ {{order.price}}</strong></li>
+                            <li><strong style="color:black; font-size:24px">Status: Available</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="full text_align_right_img">
+                        <img src="{% static 'images/img3.png' %}" alt="#" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end section -->
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Start Banner -->
+    <div class="section inner_page_banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="banner_title">
+                        <h3>Subprofile</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Banner -->
+<!-- section -->
+    <div class="section layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="heading_main text_align_center">
+                           <h2><span class="theme_color"></span>Add a Subprofile</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end section -->
+    <!-- subprofile_form -->
+    <div class="section contact_form">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 offset-lg-3">
+                    <div class="full">
+                        <form class="contact_form_inner" action="subprofile" method="post">
+                            {% csrf_token %}
+                            {% for message in messages %}
+                            <h3 style="text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;">{{message}}</h3>
+                            {% endfor %}
+                            <fieldset>
+                                <div class="field">
+                                    <input type="email" name="subprofile_email" placeholder="Subprofile Email" required="required">
+                                </div>
+                                <div class="field">
+                                    <select name="role" required="required">
+                                            <option name="sellers">SELLER</option>
+                                            <option name="buyers">BUYER</option>
+                                    </select>
+                                </div>
+
+                                <div class="field center">
+                                    <button>Save</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end subprofile_form -->
+    <!-- end section -->
+{% endblock %}

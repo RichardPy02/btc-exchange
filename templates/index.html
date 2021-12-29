@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Start Banner -->
+    <div class="ulockd-home-slider">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="pogoSlider" id="js-main-slider">
+                    <div class="pogoSlider-slide" style="background-image:url({% static 'images/slide_img.png' %});">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="slide_text white_fonts">
+                                        <h3>Progress & Success<br><strong>Currency</strong></h3>
+                                        <br>
+                                        {% if user.is_authenticated %}
+                                        <a class="start_exchange_bt" href="{% url 'orders' %}">Welcome {{user.first_name}}, Start Exchange ></a>
+                                        {% else %}
+                                        <a class="start_exchange_bt" href="{% url 'login' %}">Sign In To Start Exchange ></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pogoSlider-slide" style="background-image:url({% static 'images/crypto-blog-banner.jpg' %});">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="slide_text white_fonts">
+                                        <h3>Progress & Success<br><strong>Currency</strong></h3>
+                                        <br>
+                                        {% if user.is_authenticated %}
+                                        <a class="start_exchange_bt" href="{% url 'orders' %}">Welcome {{user.first_name}}, Start Exchange ></a>
+                                        {% else %}
+                                        <a class="start_exchange_bt" href="{% url 'login' %}">Sign In To Start Exchange ></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- .pogoSlider -->
+            </div>
+        </div>
+    </div>
+    <!-- End Banner -->
+
+
+{% endblock %}
