@@ -11,7 +11,7 @@
   <p align="center">
     A Django project developing a cryptocurrency exchange platform using MongoDB as database
     <br/>
-    <a href=""><strong>Visit the website »</strong></a>
+    <!-- <a href=""><strong>Visit the website »</strong></a> -->
   </p>
 </div>
 
