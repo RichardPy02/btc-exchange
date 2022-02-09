@@ -75,7 +75,7 @@ This project assumes you have already installed Python (at least 3.9.9 version) 
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/RichardPy02/bacheca.git
+   git clone https://github.com/RichardPy02/btc-exchange.git
    ```
 2. Install external packages using requirements.txt file
    ```sh
