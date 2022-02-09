@@ -47,7 +47,7 @@
 
 ![Home Page image](https://github.com/RichardPy02/btc-exchange/blob/main/static/images/home_page.png)
 
-This project, realized for educational puroposes, regards building a cryptocurrency exchange platform by using MongoDB and a web framework (in this case [Django](https://www.djangoproject.com/)).
+This project, realized for educational purposes, regards building a cryptocurrency exchange platform by using MongoDB and a web framework (in this case [Django](https://www.djangoproject.com/)).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
